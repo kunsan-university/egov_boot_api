@@ -1,2 +1,3 @@
 # egov_boot_api
-spring boot api server
+
+notice board api server based on egovframework.
