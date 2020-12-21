@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import univ.kunsan.board.list.service.dto.BoardDTO;
 
 @RestController
-public class BoardManagerController {
+public class BoardManagerController
+{
     
     /**
      * search board list
