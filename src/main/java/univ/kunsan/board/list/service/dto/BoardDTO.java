@@ -7,7 +7,8 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class BoardDTO {
+public class BoardDTO
+{
     
     private static final long serialVersionUID = -3779821913760046011L;
 
