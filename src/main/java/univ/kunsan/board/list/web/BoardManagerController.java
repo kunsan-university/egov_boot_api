@@ -1,31 +1,39 @@
 package univ.kunsan.board.list.web;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import univ.kunsan.board.list.service.BoardManagerService;
 import univ.kunsan.board.list.service.dto.BoardDTO;
+import univ.kunsan.board.list.service.mybatis.BoardMybatisRepository;
 
 @RestController
 public class BoardManagerController
 {
-    
+
+    @Autowired
+    BoardManagerService boardManagerService;
+
+    @Autowired
+    BoardMybatisRepository boardMybatisRepository;
+
     /**
      * search board list
      * 
      * @return
      */
     @GetMapping("/boardList")
-    public Map<String, Object> getList()
+    public List<BoardDTO> getList()
     {
-        BoardDTO boardDTO = new BoardDTO();
+        return boardManagerService.selectBoardList();
+    }
 
-        Map<String, Object> boardMap = new HashMap<String, Object>();
-
-        boardMap.put("bbsId", "BBSMSTR_AAAAAAAAAAAA");
-
-        return boardMap;
+    @GetMapping("/boardArticle")
+    public BoardDTO getBoard()
+    {
+        return boardManagerService.selectBoardArticle();
     }
 }
