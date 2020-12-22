@@ -31,6 +31,11 @@ public class BoardManagerController
         return boardManagerService.selectBoardList();
     }
 
+    /**
+     * get board article
+     * 
+     * @return
+     */
     @GetMapping("/boardArticle")
     public BoardDTO getBoardArticle()
     {
