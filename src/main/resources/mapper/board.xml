@@ -61,18 +61,18 @@
 
     <update id="updateBoardArticle" parameterType="univ.kunsan.board.list.service.Board">
         UPDATE LETTNBBS
-           SET NTT_SJ = #nttSj#
-             , NTT_CN = #nttCn#
-             , NTCR_ID = #ntcrId#
-             , NTCR_NM = #ntcrNm#
-             , PASSWORD = #password#
-             , NTCE_BGNDE = #ntceBgnde#
-             , NTCE_ENDDE = #ntceEndde#
-             , LAST_UPDUSR_ID = #lastUpdusrId#
-             , ATCH_FILE_ID = #atchFileId#
+           SET NTT_SJ = #{nttSj}
+             , NTT_CN = #{nttCn}
+             , NTCR_ID = #{ntcrId}
+             , NTCR_NM = #{ntcrNm}
+             , PASSWORD = #{password}
+             , NTCE_BGNDE = #{ntceBgnde}
+             , NTCE_ENDDE = #{ntceEndde}
+             , LAST_UPDUSR_ID = #{lastUpdusrId}
+             , ATCH_FILE_ID = #{atchFileId}
              , LAST_UPDT_PNTTM = SYSDATE()
-         WHERE BBS_ID = #bbsId#
-           AND NTT_ID = #nttId#
+         WHERE BBS_ID = #{bbsId}
+           AND NTT_ID = #{nttId}
     </update>
 
     <select id="getBoardMaster" resultType="univ.kunsan.board.list.service.dto.BoardMasterDTO">
