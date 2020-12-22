@@ -4,6 +4,24 @@
 
 <mapper namespace="univ.kunsan.board.list.service.mybatis.BoardMybatisMapper">
 
+    <select id="getViews" resultType="Integer">
+        SELECT NVL(MAX(RDCNT),0)+1 AS RDCNT
+          FROM LETTNBBS
+          <!-- (BBS_ID, NTT_ID) fileds will fixed value -->
+         WHERE BBS_ID = 'BBSMSTR_AAAAAAAAAAAA'
+           AND NTT_ID = 14
+    </select>
+
+    <update id="updateViews">
+    <!-- (UPDUSER_ID, BBS_ID, NTT_ID) fields will fixed value -->
+        UPDATE LETTNBBS SET 
+         RDCNT = #inqireCo#
+       , LAST_UPDUSR_ID = 'Admin'
+       , LAST_UPDT_PNTTM = SYSDATE
+         WHERE BBS_ID = 'BBSMSTR_AAAAAAAAAAAA'
+           AND NTT_ID = 14
+    </update>
+
     <select id="getBoard" resultType="univ.kunsan.board.list.service.dto.BoardDTO">
         SELECT 1;
     </select>
