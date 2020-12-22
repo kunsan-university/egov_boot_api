@@ -15,9 +15,9 @@ public class BoardMybatisRepository
     @Resource
     BoardMybatisMapper boardMybatisMapper;
 
-    public BoardDTO getBoard()
+    public BoardDTO getBoardArticle()
     {
-        return boardMybatisMapper.getBoard();
+        return boardMybatisMapper.getBoardArticle();
     }
 
     public List<BoardDTO> getBoardList()
@@ -28,5 +28,15 @@ public class BoardMybatisRepository
     public int setBoard(Map<String, Object> params)
     {
         return boardMybatisMapper.setBoard(params);
+    }
+
+    Integer getViews()
+    {
+        return boardMybatisMapper.getViews();
+    }
+
+    Integer updateViews()
+    {
+        return boardMybatisMapper.updateViews();
     }
 }

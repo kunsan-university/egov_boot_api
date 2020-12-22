@@ -10,9 +10,13 @@ import univ.kunsan.board.list.service.dto.BoardDTO;
 @Mapper
 public interface BoardMybatisMapper
 {
-    BoardDTO getBoard();
+    BoardDTO getBoardArticle();
 
     List<BoardDTO> getBoardList();
 
     int setBoard(Map<String, Object> params);
+
+    Integer getViews();
+
+    Integer updateViews();
 }
