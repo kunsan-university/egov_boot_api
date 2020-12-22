@@ -26,13 +26,13 @@ public class BoardManagerController
      * @return
      */
     @GetMapping("/boardList")
-    public List<BoardDTO> getList()
+    public List<BoardDTO> getBoardList()
     {
         return boardManagerService.selectBoardList();
     }
 
     @GetMapping("/boardArticle")
-    public BoardDTO getBoard()
+    public BoardDTO getBoardArticle()
     {
         return boardManagerService.selectBoardArticle();
     }
