@@ -26,6 +26,7 @@ public class BoardManagerServiceImpl implements BoardManagerService
         return boardList;
     }
 
+    // return type will fixed list or map
     public BoardDTO selectBoardArticle()
     {
         // views increment(true, false)
@@ -35,5 +36,7 @@ public class BoardManagerServiceImpl implements BoardManagerService
         // boardDTO.setLastUpdusrId("유저닉네임");
 
         return boardMybatisRepository.getBoardArticle();
+
+        // board master infomation will add
     }
 }
