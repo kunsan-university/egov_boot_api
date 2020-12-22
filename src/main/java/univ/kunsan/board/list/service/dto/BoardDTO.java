@@ -1,13 +1,16 @@
 package univ.kunsan.board.list.service.dto;
 
+import java.io.Serializable;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import univ.kunsan.board.list.service.Board;
 
 @Getter
 @Setter
 @ToString
-public class BoardDTO
+public class BoardDTO extends Board implements Serializable
 {
     
     private static final long serialVersionUID = -3779821913760046011L;
@@ -22,7 +25,7 @@ public class BoardDTO
     private String searchEndDe = "";
 
     /** search word */
-    private String searchWRd = "";
+    private String searchWrd = "";
 
     /** sort order(DESC, ASC) */
     private long sortOrdr = 0L;
