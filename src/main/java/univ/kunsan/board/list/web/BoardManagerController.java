@@ -44,7 +44,7 @@ public class BoardManagerController
         return boardManagerService.selectBoardArticle();
     }
 
-    @PutMapping("/boardAticle")
+    @PutMapping("/boardArticle")
     public String updateBoardArticle(Board board)
     {
         // 1. user info
