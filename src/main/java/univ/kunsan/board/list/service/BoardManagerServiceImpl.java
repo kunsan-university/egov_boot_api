@@ -22,20 +22,18 @@ public class BoardManagerServiceImpl implements BoardManagerService
     public List<BoardDTO> selectBoardList()
     {
         List<BoardDTO> boardList = boardMybatisRepository.getBoardList();
-        List<Map> results = new ArrayList<Map>();
-
-        // for(BoardDTO boardDTO: boardList)
-        // {
-        //     Map<String, Object> board = new HashMap<>();
-            
-        // }
-
 
         return boardList;
     }
 
     public BoardDTO selectBoardArticle()
     {
-        return boardMybatisRepository.getBoard();
+        // views increment(true, false)
+        // boardDTO.setPlusCount(true);
+
+        // last upader nick id
+        // boardDTO.setLastUpdusrId("유저닉네임");
+
+        return boardMybatisRepository.getBoardArticle();
     }
 }
