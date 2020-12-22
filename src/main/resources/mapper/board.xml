@@ -59,7 +59,23 @@
            AND a.NTT_ID = 14
     </select>
 
-    <select id="getBoardArticleMaster" resultType="univ.kunsan.board.list.service.dto.BoardMasterDTO">
+    <update id="updateBoardArticle" parameterType="univ.kunsan.board.list.service.Board">
+        UPDATE LETTNBBS
+           SET NTT_SJ = #nttSj#
+             , NTT_CN = #nttCn#
+             , NTCR_ID = #ntcrId#
+             , NTCR_NM = #ntcrNm#
+             , PASSWORD = #password#
+             , NTCE_BGNDE = #ntceBgnde#
+             , NTCE_ENDDE = #ntceEndde#
+             , LAST_UPDUSR_ID = #lastUpdusrId#
+             , ATCH_FILE_ID = #atchFileId#
+             , LAST_UPDT_PNTTM = SYSDATE()
+         WHERE BBS_ID = #bbsId#
+           AND NTT_ID = #nttId#
+    </update>
+
+    <select id="getBoardMaster" resultType="univ.kunsan.board.list.service.dto.BoardMasterDTO">
        SELECT a.BBS_ID
             , a.BBS_TY_CODE
             , b.CODE_NM as BBS_TY_CODE_NM, a.BBS_INTRCN
