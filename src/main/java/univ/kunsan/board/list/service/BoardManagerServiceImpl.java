@@ -1,6 +1,8 @@
 package univ.kunsan.board.list.service;
 
+import java.security.KeyStore.Entry;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,5 +38,20 @@ public class BoardManagerServiceImpl implements BoardManagerService
         return boardMybatisRepository.getBoardArticle();
 
         // board master infomation will add
+    }
+
+    public boolean updateBoardArticle(Board board)
+    {
+        try
+        {
+            boardMybatisRepository.updateBoardArticle(board);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return false;
+        }
+
+        return true;
     }
 }

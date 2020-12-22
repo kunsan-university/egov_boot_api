@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import univ.kunsan.board.list.service.Board;
 import univ.kunsan.board.list.service.BoardManagerService;
 import univ.kunsan.board.list.service.dto.BoardDTO;
 import univ.kunsan.board.list.service.mybatis.BoardMybatisRepository;
@@ -40,5 +42,22 @@ public class BoardManagerController
     public BoardDTO getBoardArticle()
     {
         return boardManagerService.selectBoardArticle();
+    }
+
+    @PutMapping("/boardAticle")
+    public String updateBoardArticle(Board board)
+    {
+        // 1. user info
+        // 2. user auth?
+        // 3. attach file?
+        // 4. bean validator?
+        // 5. bindingResult.hasErrors()?
+        // 6. isAuthored?
+        // 7. lastUpdater user set
+        // 8. set board attribute(ntcrNm, password, Nttcn)
+
+        boardManagerService.updateBoardArticle(board);
+
+        return "success";
     }
 }

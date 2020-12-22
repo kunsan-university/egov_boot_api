@@ -5,12 +5,15 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import univ.kunsan.board.list.service.Board;
 import univ.kunsan.board.list.service.dto.BoardDTO;
 
 @Mapper
 public interface BoardMybatisMapper
 {
     BoardDTO getBoardArticle();
+
+    int updateBoardArticle(Board board);
 
     List<BoardDTO> getBoardList();
 

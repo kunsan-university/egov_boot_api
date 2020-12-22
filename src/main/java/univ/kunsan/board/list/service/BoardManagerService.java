@@ -9,4 +9,6 @@ public interface BoardManagerService
     List<BoardDTO> selectBoardList();
 
     BoardDTO selectBoardArticle();
+
+    boolean updateBoardArticle(Board board);
 }
