@@ -4,7 +4,8 @@ import java.util.List;
 
 import univ.kunsan.board.list.service.dto.BoardDTO;
 
-public interface BoardManagerService {
+public interface BoardManagerService
+{
     List<BoardDTO> selectBoardList();
 
     BoardDTO selectBoardArticle();
