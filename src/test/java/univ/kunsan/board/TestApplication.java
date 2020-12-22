@@ -3,6 +3,8 @@ package univ.kunsan.board;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import javax.swing.text.AbstractDocument.Content;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +40,7 @@ public class TestApplication
         info.add("inqireCo", "0");
         info.add("replyLc", "0");
 
-        mvc.perform(put("/boardArticle").params(info)).andExpect(status().isOk());
+        mvc.perform(put("/boardArticle").params(info))
+           .andExpect(status().isOk());
     }
 }
