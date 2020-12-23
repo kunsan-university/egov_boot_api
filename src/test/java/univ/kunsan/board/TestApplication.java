@@ -72,4 +72,36 @@ public class TestApplication
         mvc.perform(post("/boardArticle").params(info))
            .andExpect(status().isOk());
     }
+
+    @Test
+    public void testDeleteBoardArticle() throws Exception
+    {
+        // ("nttSj", "이 글은 작서자에 의하여 삭제되었습니다.");
+        info.add("atchFileId","");
+        info.add("bbsId","BBSMSTR_AAAAAAAAAAAA");
+        info.add("frstRegisterId","");
+        info.add("frstRegisterPnttm","");
+        info.add("lastUpdusrId","USRCNFRM_00000000000");
+        info.add("lastUpdusrPnttm","");
+        info.add("ntceBgnde","");
+        info.add("ntceEndde","");
+        info.add("ntcrId","");
+        info.add("ntcrNm","");
+        info.add("nttCn","werht");
+        info.add("nttId","11");
+        info.add("nttNo","0");
+        info.add("nttSj","이 글은 작성자에 의해서 삭제되었습니다.");
+        info.add("parnts","0");
+        info.add("password","");
+        info.add("inqireCo","0");
+        info.add("replyAt","");
+        info.add("replyLc","0");
+        info.add("sortOrdr","3");
+        info.add("useAt","");
+        info.add("ntceEnddeView","");
+        info.add("ntceBgndeView","");
+
+        mvc.perform(delete("/boardArticle").params(info))
+           .andExpect(status().isOk());
+    }
 }
