@@ -8,7 +8,7 @@ public interface BoardManagerService
 {
     List<BoardDTO> selectBoardList(String bbsId);
 
-    BoardDTO selectBoardArticle();
+    BoardDTO selectBoardArticle(String bbsId, String nttId);
 
     boolean updateBoardArticle(Board board);
 

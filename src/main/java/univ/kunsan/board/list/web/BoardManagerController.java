@@ -41,9 +41,9 @@ public class BoardManagerController
      * @return
      */
     @GetMapping("/boardArticle")
-    public BoardDTO getBoardArticle()
+    public BoardDTO getBoardArticle(String bbsId, String nttId)
     {
-        return boardManagerService.selectBoardArticle();
+        return boardManagerService.selectBoardArticle(bbsId, nttId);
     }
 
     /**

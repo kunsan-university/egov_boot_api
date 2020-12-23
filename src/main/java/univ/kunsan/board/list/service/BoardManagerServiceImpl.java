@@ -27,15 +27,15 @@ public class BoardManagerServiceImpl implements BoardManagerService
     }
 
     // return type will fixed list or map
-    public BoardDTO selectBoardArticle()
+    public BoardDTO selectBoardArticle(String bbsId, String nttId)
     {
         // views increment(true, false)
         // boardDTO.setPlusCount(true);
 
-        // last upader nick id
+        // last upader id
         // boardDTO.setLastUpdusrId("유저닉네임");
 
-        return boardMybatisRepository.getBoardArticle();
+        return boardMybatisRepository.getBoardArticle(bbsId, nttId);
 
         // board master infomation will add
     }

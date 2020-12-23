@@ -16,9 +16,9 @@ public class BoardMybatisRepository
     @Resource
     BoardMybatisMapper boardMybatisMapper;
 
-    public BoardDTO getBoardArticle()
+    public BoardDTO getBoardArticle(String bbsId, String nttId)
     {
-        return boardMybatisMapper.getBoardArticle();
+        return boardMybatisMapper.getBoardArticle(bbsId, nttId);
     }
 
     public int updateBoardArticle(Board board)

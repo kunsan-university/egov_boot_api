@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import univ.kunsan.board.list.service.Board;
 import univ.kunsan.board.list.service.dto.BoardDTO;
@@ -11,7 +12,7 @@ import univ.kunsan.board.list.service.dto.BoardDTO;
 @Mapper
 public interface BoardMybatisMapper
 {
-    BoardDTO getBoardArticle();
+    BoardDTO getBoardArticle(@Param("bbsId") String bbsId, @Param("nttId") String nttId);
 
     int updateBoardArticle(Board board);
 
