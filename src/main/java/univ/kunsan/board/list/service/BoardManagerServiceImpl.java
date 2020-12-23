@@ -54,4 +54,27 @@ public class BoardManagerServiceImpl implements BoardManagerService
 
         return true;
     }
+
+    public boolean insertBoardArticle(Board board)
+    {
+        try
+        {
+            // not reply board article
+            board.setParnts("0");
+            board.setReplyLc("0");
+            board.setReplyAt("N");
+
+            Long nttId = boardMybatisRepository.getMaxNttId();
+            board.setNttId(nttId);
+
+            boardMybatisRepository.insertBoardArticle(board);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return false;
+        }
+
+        return true;
+    }
 }

@@ -11,4 +11,6 @@ public interface BoardManagerService
     BoardDTO selectBoardArticle();
 
     boolean updateBoardArticle(Board board);
+
+    boolean insertBoardArticle(Board board);
 }
