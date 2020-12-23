@@ -104,4 +104,13 @@ public class TestApplication
         mvc.perform(delete("/boardArticle").params(info))
            .andExpect(status().isOk());
     }
+
+    @Test
+    public void testGetBoardList() throws Exception
+    {
+        info.add("bbsId", "BBSMSTR_AAAAAAAAAAAA");
+
+        mvc.perform(get("/boardList").params(info))
+           .andExpect(status().isOk());
+    }
 }
