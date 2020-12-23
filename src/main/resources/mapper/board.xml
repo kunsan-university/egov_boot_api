@@ -79,7 +79,7 @@
         <selectKey resultType="long" keyProperty="nttNo">
             SELECT IFNULL(MAX(SORT_ORDR),0)+1 AS NTT_NO
               FROM LETTNBBS
-    	       WHERE BBS_ID = ${bbsId};
+    	       WHERE BBS_ID = #{bbsId};
         </selectKey>
 	      INSERT INTO LETTNBBS
 	           (
