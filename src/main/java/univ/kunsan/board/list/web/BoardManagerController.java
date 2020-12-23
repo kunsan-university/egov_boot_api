@@ -30,9 +30,9 @@ public class BoardManagerController
      * @return
      */
     @GetMapping("/boardList")
-    public List<BoardDTO> getBoardList()
+    public List<BoardDTO> getBoardList(String bbsId)
     {
-        return boardManagerService.selectBoardList();
+        return boardManagerService.selectBoardList(bbsId);
     }
 
     /**

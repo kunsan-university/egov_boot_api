@@ -6,7 +6,7 @@ import univ.kunsan.board.list.service.dto.BoardDTO;
 
 public interface BoardManagerService
 {
-    List<BoardDTO> selectBoardList();
+    List<BoardDTO> selectBoardList(String bbsId);
 
     BoardDTO selectBoardArticle();
 

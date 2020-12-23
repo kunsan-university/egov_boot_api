@@ -36,9 +36,9 @@ public class BoardMybatisRepository
         return boardMybatisMapper.deleteBoardArticle(board);
     }
 
-    public List<BoardDTO> getBoardList()
+    public List<BoardDTO> getBoardList(String bbsId)
     {
-        return boardMybatisMapper.getBoardList();
+        return boardMybatisMapper.getBoardList(bbsId);
     }
 
     public int setBoard(Map<String, Object> params)
