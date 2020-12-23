@@ -31,6 +31,11 @@ public class BoardMybatisRepository
         return boardMybatisMapper.insertBoardArticle(board);
     }
 
+    public int deleteBoardArticle(Board board)
+    {
+        return boardMybatisMapper.deleteBoardArticle(board);
+    }
+
     public List<BoardDTO> getBoardList()
     {
         return boardMybatisMapper.getBoardList();
