@@ -75,6 +75,58 @@
            AND NTT_ID = #{nttId}
     </update>
 
+    <insert id="insertBoardArticle" parameterType="univ.kunsan.board.list.service.Board">
+        <selectKey resultType="long" keyProperty="nttNo">
+            SELECT IFNULL(MAX(SORT_ORDR),0)+1 AS NTT_NO
+              FROM LETTNBBS
+    	       WHERE BBS_ID = ${bbsId};
+        </selectKey>
+	      INSERT INTO LETTNBBS
+	           (
+                  NTT_ID
+                , BBS_ID
+                , NTT_SJ
+                , NTT_CN
+                , SORT_ORDR
+                , NTCR_ID
+                , NTCR_NM
+                , PASSWORD
+                , RDCNT
+                , NTCE_BGNDE
+                , NTCE_ENDDE
+                , ANSWER_AT
+                , PARNTSCTT_NO
+                , NTT_NO
+                , ANSWER_LC
+                , ATCH_FILE_ID
+                , FRST_REGISTER_ID
+                , FRST_REGIST_PNTTM
+                , USE_AT
+	           )
+	      VALUES
+	           (
+                  #{nttId}
+                , #{bbsId}
+                , #{nttSj}
+                , #{nttCn}
+                , #{nttNo}
+                , #{ntcrId}
+                , #{ntcrNm}
+                , #{password}
+                , #{inqireCo}
+                , #{ntceBgnde}
+                , #{ntceEndde}
+                , #{replyAt}
+                , #{parnts}
+                , 1
+                , #{replyLc}
+                , #{atchFileId}
+                , #{frstRegisterId}
+                , SYSDATE()
+                , 'Y'
+	           )
+    </insert>
+
     <select id="getBoardMaster" resultType="univ.kunsan.board.list.service.dto.BoardMasterDTO">
        SELECT a.BBS_ID
             , a.BBS_TY_CODE
@@ -162,5 +214,9 @@
         INSERT INTO `board` (`email`,`password`,`name`)
         VALUES (#{email}, #{password}, #{name})
     </insert>
+
+    <select id="getMaxNttId" resultType="long">
+        SELECT IFNULL(MAX(NTT_ID),0)+1 AS NTT_ID  FROM LETTNBBS;
+    </select>
 
 </mapper>
