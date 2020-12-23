@@ -79,4 +79,19 @@ public class BoardManagerServiceImpl implements BoardManagerService
 
         return true;
     }
+
+    public boolean deleteBoardArticle(Board board)
+    {
+        try
+        {
+            boardMybatisRepository.deleteBoardArticle(board);
+        }
+        catch (Exception e)
+        {
+            System.out.println(e);
+            return false;
+        }
+
+        return true;
+    }
 }

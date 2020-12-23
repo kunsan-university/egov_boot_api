@@ -13,4 +13,6 @@ public interface BoardManagerService
     boolean updateBoardArticle(Board board);
 
     boolean insertBoardArticle(Board board);
+
+    boolean deleteBoardArticle(Board board);
 }
