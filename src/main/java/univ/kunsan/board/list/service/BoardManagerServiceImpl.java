@@ -59,6 +59,8 @@ public class BoardManagerServiceImpl implements BoardManagerService
     {
         try
         {
+            board.setNtcrNm("");
+            board.setPassword("");
             // not reply board article
             board.setParnts("0");
             board.setReplyLc("0");
