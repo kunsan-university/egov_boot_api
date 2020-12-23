@@ -26,6 +26,11 @@ public class BoardMybatisRepository
         return boardMybatisMapper.updateBoardArticle(board);
     }
 
+    public int insertBoardArticle(Board board)
+    {
+        return boardMybatisMapper.insertBoardArticle(board);
+    }
+
     public List<BoardDTO> getBoardList()
     {
         return boardMybatisMapper.getBoardList();
@@ -44,5 +49,10 @@ public class BoardMybatisRepository
     Integer updateViews()
     {
         return boardMybatisMapper.updateViews();
+    }
+
+    public long getMaxNttId()
+    {
+        return boardMybatisMapper.getMaxNttId();
     }
 }

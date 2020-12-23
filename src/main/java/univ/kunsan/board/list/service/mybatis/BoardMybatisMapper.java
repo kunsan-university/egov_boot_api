@@ -15,6 +15,8 @@ public interface BoardMybatisMapper
 
     int updateBoardArticle(Board board);
 
+    int insertBoardArticle(Board board);
+
     List<BoardDTO> getBoardList();
 
     int setBoard(Map<String, Object> params);
@@ -22,4 +24,6 @@ public interface BoardMybatisMapper
     Integer getViews();
 
     Integer updateViews();
+
+    long getMaxNttId();
 }
