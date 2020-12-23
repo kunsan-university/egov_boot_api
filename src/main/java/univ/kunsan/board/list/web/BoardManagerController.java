@@ -3,6 +3,7 @@ package univ.kunsan.board.list.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -45,6 +46,12 @@ public class BoardManagerController
         return boardManagerService.selectBoardArticle();
     }
 
+    /**
+     * update board article
+     * 
+     * @param board
+     * @return
+     */
     @PutMapping("/boardArticle")
     public String updateBoardArticle(Board board)
     {
@@ -69,6 +76,12 @@ public class BoardManagerController
         return "success";
     }
 
+    /**
+     * add board article
+     * 
+     * @param board
+     * @return
+     */
     @PostMapping("boardArticle")
     public String insertBoardArticle(Board board)
     {
@@ -77,6 +90,20 @@ public class BoardManagerController
         // check reply or parent
 
         boardManagerService.insertBoardArticle(board);
+
+        return "success";
+    }
+
+    /**
+     * delete board article
+     * 
+     * @param board
+     * @return
+     */
+    @DeleteMapping("boardArticle")
+    public String deleteBoardArticle(Board board)
+    {
+        boardManagerService.deleteBoardArticle(board);
 
         return "success";
     }
