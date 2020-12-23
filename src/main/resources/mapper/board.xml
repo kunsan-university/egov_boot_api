@@ -8,18 +8,18 @@
         SELECT IFNULL(MAX(RDCNT),0)+1 AS RDCNT
           FROM LETTNBBS
           <!-- (BBS_ID, NTT_ID) fileds will fixed value -->
-         WHERE BBS_ID = 'BBSMSTR_AAAAAAAAAAAA'
-           AND NTT_ID = 14
+         WHERE BBS_ID = #{bbsId}
+           AND NTT_ID = #{nttId}
     </select>
 
     <update id="updateViews">
-    <!-- (UPDUSER_ID, BBS_ID, NTT_ID) fields will fixed value -->
+    <!-- (UPDUSER_ID) fields will fixed value -->
         UPDATE LETTNBBS SET 
          RDCNT = #inqireCo#
-       , LAST_UPDUSR_ID = 'Admin'
+       , LAST_UPDUSR_ID = 'USRCNFRM_00000000000'
        , LAST_UPDT_PNTTM = SYSDATE
-         WHERE BBS_ID = 'BBSMSTR_AAAAAAAAAAAA'
-           AND NTT_ID = 14
+         WHERE BBS_ID = #{bbsId}
+           AND NTT_ID = #{nttId}
     </update>
 
     <select id="getBoardArticle" resultType="univ.kunsan.board.list.service.dto.BoardDTO">
@@ -158,8 +158,7 @@
             , (
                   SELECT IFNULL(USE_AT,'N')
                     FROM LETTNBBSUSE 
-                   <!-- BBS_ID field will fixed value -->
-                   WHERE BBS_ID = 'BBSMSTR_AAAAAAAAAAAA' 
+                   WHERE BBS_ID = #{bbsId}
                      AND TRGET_ID IN 
                        (
                         <!-- 1 will fixed unique_id -->
@@ -192,8 +191,7 @@
            ON a.TMPLAT_ID = d.TMPLAT_ID
          LEFT OUTER JOIN COMVNUSERMASTER e
            ON a.FRST_REGISTER_ID = e.ESNTL_ID
-           <!-- BBS_ID field will fixed value -->
-        WHERE a.BBS_ID = 'BBSMSTR_AAAAAAAAAAAA';
+        WHERE a.BBS_ID = #{bbsId};
     </select>
 
     <select id="getBoardList" resultType="univ.kunsan.board.list.service.dto.BoardDTO">
@@ -214,7 +212,7 @@
           FROM LETTNBBS a
           LEFT OUTER JOIN COMVNUSERMASTER b
             ON a.FRST_REGISTER_ID = b.ESNTL_ID 
-         WHERE a.BBS_ID = 'BBSMSTR_AAAAAAAAAAAA'
+         WHERE a.BBS_ID = #{bbsId}
          ORDER BY a.SORT_ORDR DESC, NTT_NO ASC
          LIMIT 10
         OFFSET 1;
