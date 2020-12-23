@@ -127,6 +127,16 @@
 	           )
     </insert>
 
+    <update id="deleteBoardArticle" parameterType="univ.kunsan.board.list.service.Board">
+        UPDATE LETTNBBS
+           SET NTT_SJ = #{nttSj}
+             , USE_AT = 'N'
+             , LAST_UPDUSR_ID = #{lastUpdusrId}
+             , LAST_UPDT_PNTTM = SYSDATE()
+         WHERE BBS_ID = #{bbsId}
+           AND NTT_ID = #{nttId}
+    </update>
+
     <select id="getBoardMaster" resultType="univ.kunsan.board.list.service.dto.BoardMasterDTO">
        SELECT a.BBS_ID
             , a.BBS_TY_CODE
