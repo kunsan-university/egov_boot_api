@@ -55,8 +55,8 @@
           LEFT OUTER JOIN LETTNBBSMASTER c
             ON a.BBS_ID = c.BBS_ID
         <!-- (BBS_ID, NTT_ID) fields will fixed values -->
-         WHERE a.BBS_ID = 'BBSMSTR_AAAAAAAAAAAA'
-           AND a.NTT_ID = 14
+         WHERE a.BBS_ID = #{bbsId}
+           AND a.NTT_ID = #{nttId}
     </select>
 
     <update id="updateBoardArticle" parameterType="univ.kunsan.board.list.service.Board">
