@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import univ.kunsan.board.list.service.Board;
@@ -29,8 +31,8 @@ public class BoardManagerController
      * 
      * @return
      */
-    @GetMapping("/boardList")
-    public List<BoardDTO> getBoardList(String bbsId)
+    @GetMapping("/board/{bbsId}")
+    public List<BoardDTO> getBoardList(@PathVariable("bbsId") String bbsId)
     {
         return boardManagerService.selectBoardList(bbsId);
     }
@@ -40,8 +42,8 @@ public class BoardManagerController
      * 
      * @return
      */
-    @GetMapping("/boardArticle")
-    public BoardDTO getBoardArticle(String bbsId, String nttId)
+    @GetMapping("/board/{bbsId}/{nttId}")
+    public BoardDTO getBoardArticle(@PathVariable("bbsId") String bbsId, @PathVariable("nttId") String nttId)
     {
         return boardManagerService.selectBoardArticle(bbsId, nttId);
     }
@@ -52,8 +54,8 @@ public class BoardManagerController
      * @param board
      * @return
      */
-    @PutMapping("/boardArticle")
-    public String updateBoardArticle(Board board)
+    @PutMapping("/board")
+    public String updateBoardArticle(@RequestBody Board board)
     {
         // 1. user info
         // 2. user auth?
@@ -82,8 +84,8 @@ public class BoardManagerController
      * @param board
      * @return
      */
-    @PostMapping("boardArticle")
-    public String insertBoardArticle(Board board)
+    @PostMapping("board")
+    public String insertBoardArticle(@RequestBody Board board)
     {
         // user auth check
         // file check
@@ -100,8 +102,8 @@ public class BoardManagerController
      * @param board
      * @return
      */
-    @DeleteMapping("boardArticle")
-    public String deleteBoardArticle(Board board)
+    @DeleteMapping("board")
+    public String deleteBoardArticle(@RequestBody Board board)
     {
         boardManagerService.deleteBoardArticle(board);
 
