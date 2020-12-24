@@ -24,9 +24,9 @@ public interface BoardMybatisMapper
 
     int setBoard(Map<String, Object> params);
 
-    Integer getViews();
+    int getViews(@Param("bbsId") String bbsId, @Param("nttId") String nttId);
 
-    Integer updateViews();
+    Integer updateViews(@Param("bbsId") String bbsId, @Param("nttId") String nttId, @Param("inqireCo") String inqireCo);
 
     long getMaxNttId();
 }

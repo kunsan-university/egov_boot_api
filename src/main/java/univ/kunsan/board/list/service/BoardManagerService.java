@@ -15,4 +15,6 @@ public interface BoardManagerService
     boolean insertBoardArticle(Board board);
 
     boolean deleteBoardArticle(Board board);
+
+    void plusViews(String bbsId, String nttId);
 }

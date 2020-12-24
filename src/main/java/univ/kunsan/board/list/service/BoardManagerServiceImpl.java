@@ -1,8 +1,6 @@
 package univ.kunsan.board.list.service;
 
-import java.security.KeyStore.Entry;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,9 +19,7 @@ public class BoardManagerServiceImpl implements BoardManagerService
     @Override
     public List<BoardDTO> selectBoardList(String bbsId)
     {
-        List<BoardDTO> boardList = boardMybatisRepository.getBoardList(bbsId);
-
-        return boardList;
+        return boardMybatisRepository.getBoardList(bbsId);
     }
 
     // return type will fixed list or map
@@ -93,5 +89,12 @@ public class BoardManagerServiceImpl implements BoardManagerService
         }
 
         return true;
+    }
+
+    public void plusViews(String bbsId, String nttId)
+    {
+        int views = boardMybatisRepository.getViews(bbsId, nttId);
+
+        boardMybatisRepository.updateViews(bbsId, nttId, Integer.toString(views));
     }
 }

@@ -46,14 +46,14 @@ public class BoardMybatisRepository
         return boardMybatisMapper.setBoard(params);
     }
 
-    Integer getViews()
+    public int getViews(String bbsId, String nttId)
     {
-        return boardMybatisMapper.getViews();
+        return boardMybatisMapper.getViews(bbsId, nttId);
     }
 
-    Integer updateViews()
+    public Integer updateViews(String bbsId, String nttId, String inqireCo)
     {
-        return boardMybatisMapper.updateViews();
+        return boardMybatisMapper.updateViews(bbsId, nttId, inqireCo);
     }
 
     public long getMaxNttId()

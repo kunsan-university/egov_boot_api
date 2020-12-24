@@ -45,6 +45,8 @@ public class BoardManagerController
     @GetMapping("/board/{bbsId}/{nttId}")
     public BoardDTO getBoardArticle(@PathVariable("bbsId") String bbsId, @PathVariable("nttId") String nttId)
     {
+        boardManagerService.plusViews(bbsId, nttId);
+
         return boardManagerService.selectBoardArticle(bbsId, nttId);
     }
 
