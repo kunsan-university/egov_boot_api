@@ -4,10 +4,9 @@
 
 <mapper namespace="univ.kunsan.board.list.service.mybatis.BoardMybatisMapper">
 
-    <select id="getViews" resultType="Integer">
+    <select id="getViews" parameterType="String" resultType="int">
         SELECT IFNULL(MAX(RDCNT),0)+1 AS RDCNT
           FROM LETTNBBS
-          <!-- (BBS_ID, NTT_ID) fileds will fixed value -->
          WHERE BBS_ID = #{bbsId}
            AND NTT_ID = #{nttId}
     </select>
@@ -15,9 +14,9 @@
     <update id="updateViews">
     <!-- (UPDUSER_ID) fields will fixed value -->
         UPDATE LETTNBBS SET 
-         RDCNT = #inqireCo#
+         RDCNT = #{inqireCo}
        , LAST_UPDUSR_ID = 'USRCNFRM_00000000000'
-       , LAST_UPDT_PNTTM = SYSDATE
+       , LAST_UPDT_PNTTM = SYSDATE()
          WHERE BBS_ID = #{bbsId}
            AND NTT_ID = #{nttId}
     </update>
