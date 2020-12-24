@@ -143,4 +143,11 @@ public class TestApplication
         mvc.perform(get("/board/{bbsId}", "BBSMSTR_AAAAAAAAAAAA"))
            .andExpect(status().isOk());
     }
+
+    @Test
+    public void testGetBoardArticle() throws Exception
+    {
+        mvc.perform(get("/board/{bbsId}/{nttId}", "BBSMSTR_AAAAAAAAAAAA", "5"))
+           .andExpect(status().isOk());
+    }
 }
