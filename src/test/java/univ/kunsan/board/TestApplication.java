@@ -1,17 +1,25 @@
 package univ.kunsan.board;
 
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+
+import univ.kunsan.board.list.service.Board;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -21,96 +29,118 @@ public class TestApplication
     @Autowired
     private MockMvc mvc;
 
+    @Autowired
+    private ObjectMapper objectMapper;
+
     MultiValueMap<String, String> info = new LinkedMultiValueMap<>();
+
+    String contentToObject(Board board) throws Exception
+    {
+        return objectMapper.writeValueAsString(board);
+    }
 
     @Test
     public void testUpdateBoardArticle() throws Exception
     {
-        info.add("bbsId", "BBSMSTR_AAAAAAAAAAAA");
-        info.add("lastUpdusrId", "USRCNFRM_00000000000");
-        info.add("ntceBgnde", "20201222");
-        info.add("ntceEndde", "99991231");
-        info.add("nttCn", "오늘의 단어는 가나다라마바사");
-        info.add("nttId", "14");
-        info.add("nttNo", "0");
-        info.add("nttSj", "1342567");
-        info.add("parnts", "0");
-        info.add("inqireCo", "0");
-        info.add("replyLc", "0");
+        Board board = new Board();
 
-        mvc.perform(put("/boardArticle").params(info))
+        board.setBbsId("BBSMSTR_AAAAAAAAAAAA");
+        board.setLastUpdusrId("USRCNFRM_00000000000");
+        board.setNtceBgnde("20201222");
+        board.setNtceEndde("99991231");
+        board.setNttCn("오늘의 단어는 가나다라마바사");
+        board.setNttId(14);
+        board.setNttNo(0);
+        board.setNttSj("1342567");
+        board.setParnts("0");
+        board.setInqireCo(0);
+        board.setReplyLc("0");
+
+        mvc.perform(put("/board")
+           .content(contentToObject(board))
+           .contentType(MediaType.APPLICATION_JSON)
+           .accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk());
     }
 
     @Test
     public void testInsertBoardArticle() throws Exception
     {
-        info.add("atchFileId","");
-        info.add("bbsId","BBSMSTR_AAAAAAAAAAAA");
-        info.add("frstRegisterId","USRCNFRM_00000000000");
-        info.add("frstRegisterPnttm","");
-        info.add("lastUpdusrId","");
-        info.add("lastUpdusrPnttm","");
-        info.add("ntceBgnde","10000101");
-        info.add("ntceEndde","99991231");
-        info.add("ntcrId","");
-        info.add("ntcrNm","");
-        info.add("nttCn","werht");
-        info.add("nttId","0");
-        info.add("nttNo","0");
-        info.add("nttSj","asdfxzcvbfedsh");
-        info.add("parnts","0");
-        info.add("password","");
-        info.add("inqireCo","0");
-        info.add("replyAt","N");
-        info.add("replyLc","0");
-        info.add("sortOrdr","0");
-        info.add("useAt","");
-        info.add("ntceEnddeView","");
-        info.add("ntceBgndeView","");
+        Board board = new Board();
 
-        mvc.perform(post("/boardArticle").params(info))
+        board.setAtchFileId("");
+        board.setBbsId("BBSMSTR_AAAAAAAAAAAA");
+        board.setFrstRegisterId("USRCNFRM_00000000000");
+        board.setFrstRegisterPnttm("");
+        board.setLastUpdusrId("");
+        board.setLastUpdusrPnttm("");
+        board.setNtceBgnde("10000101");
+        board.setNtceEndde("99991231");
+        board.setNtcrId("");
+        board.setNtcrNm("");
+        board.setNttCn("werht");
+        board.setNttId(0);
+        board.setNttNo(0);
+        board.setNttSj("asdfxzcvbfedsh");
+        board.setParnts("0");
+        board.setPassword("");
+        board.setInqireCo(0);
+        board.setReplyAt("N");
+        board.setReplyLc("0");
+        board.setSortOrdr(0);
+        board.setUseAt("");
+        board.setNtceEnddeView("");
+        board.setNtceBgndeView("");
+
+        String reqBody = contentToObject(board);
+
+        mvc.perform(post("/board")
+           .content(reqBody)
+           .contentType(MediaType.APPLICATION_JSON)
+           .accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk());
     }
 
     @Test
     public void testDeleteBoardArticle() throws Exception
     {
-        // ("nttSj", "이 글은 작서자에 의하여 삭제되었습니다.");
-        info.add("atchFileId","");
-        info.add("bbsId","BBSMSTR_AAAAAAAAAAAA");
-        info.add("frstRegisterId","");
-        info.add("frstRegisterPnttm","");
-        info.add("lastUpdusrId","USRCNFRM_00000000000");
-        info.add("lastUpdusrPnttm","");
-        info.add("ntceBgnde","");
-        info.add("ntceEndde","");
-        info.add("ntcrId","");
-        info.add("ntcrNm","");
-        info.add("nttCn","werht");
-        info.add("nttId","11");
-        info.add("nttNo","0");
-        info.add("nttSj","이 글은 작성자에 의해서 삭제되었습니다.");
-        info.add("parnts","0");
-        info.add("password","");
-        info.add("inqireCo","0");
-        info.add("replyAt","");
-        info.add("replyLc","0");
-        info.add("sortOrdr","3");
-        info.add("useAt","");
-        info.add("ntceEnddeView","");
-        info.add("ntceBgndeView","");
+        Board board = new Board();
 
-        mvc.perform(delete("/boardArticle").params(info))
+        board.setAtchFileId("");
+        board.setBbsId("BBSMSTR_AAAAAAAAAAAA");
+        board.setFrstRegisterId("");
+        board.setFrstRegisterPnttm("");
+        board.setLastUpdusrId("USRCNFRM_00000000000");
+        board.setLastUpdusrPnttm("");
+        board.setNtceBgnde("");
+        board.setNtceEndde("");
+        board.setNtcrId("");
+        board.setNtcrNm("");
+        board.setNttCn("werht");
+        board.setNttId(11);
+        board.setNttNo(0);
+        board.setNttSj("이 글은 작성자에 의해서 삭제되었습니다.");
+        board.setParnts("0");
+        board.setPassword("");
+        board.setInqireCo(0);
+        board.setReplyAt("");
+        board.setReplyLc("0");
+        board.setSortOrdr(3);
+        board.setUseAt("");
+        board.setNtceEnddeView("");
+        board.setNtceBgndeView("");
+
+        mvc.perform(delete("/board")
+           .content(contentToObject(board))
+           .contentType(MediaType.APPLICATION_JSON)
+           .accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk());
     }
 
     @Test
     public void testGetBoardList() throws Exception
     {
-        info.add("bbsId", "BBSMSTR_AAAAAAAAAAAA");
-
-        mvc.perform(get("/boardList").params(info))
+        mvc.perform(get("/board/{bbsId}", "BBSMSTR_AAAAAAAAAAAA"))
            .andExpect(status().isOk());
     }
 }
