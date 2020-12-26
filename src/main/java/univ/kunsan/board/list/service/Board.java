@@ -80,31 +80,31 @@ public class Board implements Serializable
 	 */
 	private String password = "";
 	/**
-	 * 조회수
+	 * Views
 	 */
 	private int inqireCo = 0;
 	/**
-	 * 답장여부
+	 * Reply (YES, NO)
 	 */
 	private String replyAt = "";
 	/**
-	 * 답장위치
+	 * Reply location
 	 */
 	private String replyLc = "0";
 	/**
-	 * 정렬순서
+	 * Sort order
 	 */
 	private long sortOrdr = 0L;
 	/**
-	 * 사용여부
+	 * Use (Yes, NO)
 	 */
 	private String useAt = "";
 	/**
-	 * 게시 종료일
+	 * notice end date
 	 */
 	private String ntceEnddeView = "";
 	/**
-	 * 게시 시작일
+	 * notice begin date
 	 */
 	private String ntceBgndeView = "";
 
