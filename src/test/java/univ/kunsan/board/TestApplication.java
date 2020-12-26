@@ -140,7 +140,14 @@ public class TestApplication
     @Test
     public void testGetBoardList() throws Exception
     {
-        mvc.perform(get("/board/{bbsId}", "BBSMSTR_AAAAAAAAAAAA"))
+        Board board = new Board();
+
+        board.setNttSj("홈페이지 샘플공지1");
+
+        mvc.perform(get("/board/{bbsId}", "BBSMSTR_AAAAAAAAAAAA")
+            .content(contentToObject(board))
+            .contentType(MediaType.APPLICATION_JSON)
+            .accept(MediaType.APPLICATION_JSON))
            .andExpect(status().isOk());
     }
 
