@@ -17,9 +17,11 @@ public class BoardManagerServiceImpl implements BoardManagerService
     private BoardMybatisRepository boardMybatisRepository;
 
     @Override
-    public List<BoardDTO> selectBoardList(String bbsId)
+    public List<BoardDTO> selectBoardList(String bbsId, Board board)
     {
-        return boardMybatisRepository.getBoardList(bbsId);
+        board.setBbsId(bbsId);
+
+        return boardMybatisRepository.getBoardList(board);
     }
 
     // return type will fixed list or map
