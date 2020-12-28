@@ -20,6 +20,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 
 import univ.kunsan.board.list.service.Board;
+import univ.kunsan.board.list.service.dto.BoardDTO;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -140,14 +141,10 @@ public class TestApplication
     @Test
     public void testGetBoardList() throws Exception
     {
-        Board board = new Board();
-
-        board.setNttSj("홈페이지 샘플공지1");
-
         mvc.perform(get("/board/{bbsId}", "BBSMSTR_AAAAAAAAAAAA")
-            .content(contentToObject(board))
-            .contentType(MediaType.APPLICATION_JSON)
-            .accept(MediaType.APPLICATION_JSON))
+           .param("searchWrd", "홈페이지 샘플공지1")
+           .param("recordCountPerPage", "20")
+           .param("firstIndex", "0"))
            .andExpect(status().isOk());
     }
 
