@@ -32,9 +32,9 @@ public class BoardManagerController
      * @return
      */
     @GetMapping("/board/{bbsId}")
-    public List<BoardDTO> getBoardList(@PathVariable("bbsId") String bbsId, @RequestBody Board board)
+    public List<BoardDTO> getBoardList(@PathVariable("bbsId") String bbsId, BoardDTO boardDTO)
     {
-        return boardManagerService.selectBoardList(bbsId, board);
+        return boardManagerService.selectBoardList(bbsId, boardDTO);
     }
 
     /**

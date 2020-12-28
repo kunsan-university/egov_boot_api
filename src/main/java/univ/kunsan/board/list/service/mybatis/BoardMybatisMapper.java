@@ -20,7 +20,7 @@ public interface BoardMybatisMapper
 
     int deleteBoardArticle(Board board);
 
-    List<BoardDTO> getBoardList(Board board);
+    List<BoardDTO> getBoardList(BoardDTO board);
 
     int setBoard(Map<String, Object> params);
 
