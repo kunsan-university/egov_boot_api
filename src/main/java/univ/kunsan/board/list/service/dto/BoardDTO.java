@@ -43,7 +43,7 @@ public class BoardDTO extends Board implements Serializable
     private int pageSize = 10;
 
     /** first page index */
-    private int firstIndex = 1;
+    private int firstIndex = 0;
 
     /** last page index */
     private int lastIndex = 1;
