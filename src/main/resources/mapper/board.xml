@@ -193,7 +193,7 @@
         WHERE a.BBS_ID = #{bbsId};
     </select>
 
-    <select id="getBoardList" parameterType="univ.kunsan.board.list.service.Board" resultType="univ.kunsan.board.list.service.dto.BoardDTO">
+    <select id="getBoardList" parameterType="univ.kunsan.board.list.service.dto.BoardDTO" resultType="univ.kunsan.board.list.service.dto.BoardDTO">
         SELECT a.NTT_ID
              , a.NTT_SJ
              , a.FRST_REGISTER_ID
@@ -212,10 +212,10 @@
           LEFT OUTER JOIN COMVNUSERMASTER b
             ON a.FRST_REGISTER_ID = b.ESNTL_ID 
          WHERE a.BBS_ID = #{bbsId}
-         <if test="nttSj !=null and nttSj !='' "> AND a.NTT_SJ = #{nttSj} </if>
+         <if test="searchWrd !=null and searchWrd !='' "> AND a.NTT_SJ = #{searchWrd} </if>
          ORDER BY a.SORT_ORDR DESC, NTT_NO ASC
-         LIMIT 10
-        OFFSET 0;
+         LIMIT #{recordCountPerPage}
+        OFFSET #{firstIndex};
     </select>
 
     <insert id="setBoard" parameterType="hashmap">
