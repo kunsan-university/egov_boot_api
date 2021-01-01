@@ -86,7 +86,7 @@ public class BoardManagerController
      * @param board
      * @return
      */
-    @PostMapping("board")
+    @PostMapping("/board")
     public String insertBoardArticle(@RequestBody Board board)
     {
         // user auth check
@@ -104,7 +104,7 @@ public class BoardManagerController
      * @param board
      * @return
      */
-    @DeleteMapping("board")
+    @DeleteMapping("/board")
     public String deleteBoardArticle(@RequestBody Board board)
     {
         boardManagerService.deleteBoardArticle(board);
